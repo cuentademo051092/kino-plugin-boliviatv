@@ -1,16 +1,12 @@
 {
   "id": "bolivia-tv",
   "name": "Bolivia TV",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "apiVersion": 3,
-  "description": "55 canales de Bolivia (La Paz, Santa Cruz, Cochabamba, Sucre y más), en 3 categorías: Deportes, Universitarios y Televisión. Lista fija guardada dentro del plugin.",
+  "description": "111 canales de Bolivia (La Paz, Santa Cruz, Cochabamba, Sucre y más), lista fija guardada dentro del plugin.",
   "entry": "plugin.js",
-  "hosts": [],
+  "hosts": ["raw.githubusercontent.com"],
   "liveStreamHosts": "any",
-  "capabilities": [
-    "home",
-    "resolve",
-    "channels"
-  ],
+  "capabilities": ["home", "resolve", "channels"],
   "color": "#D52B1E"
 }
