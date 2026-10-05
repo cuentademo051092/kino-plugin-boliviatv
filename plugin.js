@@ -68,18 +68,36 @@ export async function home() {
   return [{ id: "row-bolivia", title: "Bolivia", items }];
 }
 
-export async function liveCategories() {
-  await null;
-  return [{ id: "bolivia", title: "Bolivia" }];
+// Categorías (máximo 3). Deportes siempre primero.
+const CATEGORIAS = [
+  { id: "deportes", title: "Deportes", genre: "deportes" },
+  { id: "universitarios", title: "Universitarios y educativos", genre: "otros" },
+  { id: "tv", title: "Televisión", genre: "entretenimiento" },
+];
+
+// Se compara contra el nombre del canal en minúsculas y sin tildes.
+function categoriaDe(c) {
+  const k = String(c.title).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  if (/(^| )f10( |$)|tigo sports/.test(k)) return "deportes";
+  if (/umsa|(^| )tvu( |$)|upea|unifranz|universidad|universitaria/.test(k)) return "universitarios";
+  return "tv";
 }
 
-export async function liveChannels() {
+export async function liveCategories() {
   await null;
-  return { items: CANALES.map(toItem) };
+  const presentes = new Set(CANALES.map(categoriaDe));
+  return CATEGORIAS.filter((c) => presentes.has(c.id));
+}
+
+export async function liveChannels(args) {
+  await null;
+  const { categoryId } = args || {};
+  const lista = categoryId ? CANALES.filter((c) => categoriaDe(c) === categoryId) : CANALES;
+  return { items: lista.map(toItem) };
 }
 
 function toItem(c) {
-  const item = { id: c.id, title: c.title, kind: "live", stream: { url: c.url } };
+  const item = { id: c.id, title: c.title, kind: "live", categoryId: categoriaDe(c), stream: { url: c.url } };
   if (c.logo) item.poster = c.logo;
   if (c.referer) item.stream.headers = { Referer: c.referer };
   return item;
