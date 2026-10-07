@@ -1,12 +1,21 @@
 {
-  "id": "bolivia-tv",
-  "name": "Bolivia TV",
-  "version": "1.0.0",
+  "id": "tdtchannels",
+  "name": "TDTChannels",
+  "version": "0.2.5",
   "apiVersion": 3,
-  "description": "111 canales de Bolivia (La Paz, Santa Cruz, Cochabamba, Sucre y más), lista fija guardada dentro del plugin.",
   "entry": "plugin.js",
-  "hosts": ["raw.githubusercontent.com"],
+  "description": "Canales de TV en abierto de TDTChannels en la pestaña En vivo.",
+  "author": "Cuenta Demo",
+  "homepage": "https://github.com/laquay/tdtchannels",
+  "hosts": [
+    "tdtchannels.com",
+    "www.tdtchannels.com"
+  ],
+  "capabilities": [
+    "home",
+    "resolve",
+    "channels"
+  ],
   "liveStreamHosts": "any",
-  "capabilities": ["home", "resolve", "channels"],
-  "color": "#D52B1E"
+  "icon": "icon.png"
 }
