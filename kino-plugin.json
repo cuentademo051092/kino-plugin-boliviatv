@@ -1,0 +1,19 @@
+{
+  "id": "bolivia-tv",
+  "name": "Bolivia TV",
+  "version": "1.0.1",
+  "apiVersion": 3,
+  "description": "55 canales de Bolivia (televisión, deportes y universitarios), lista fija guardada dentro del plugin.",
+  "entry": "plugin.js",
+  "icon": "icon.png",
+  "hosts": [
+    "raw.githubusercontent.com"
+  ],
+  "liveStreamHosts": "any",
+  "capabilities": [
+    "home",
+    "resolve",
+    "channels"
+  ],
+  "color": "#D52B1E"
+}
