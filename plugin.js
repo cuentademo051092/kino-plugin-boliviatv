@@ -83,7 +83,7 @@ export async function liveChannels() {
 
 function toItem(c) {
   const item = { id: c.id, title: c.title, kind: "live", stream: { url: c.url } };
-  item.poster = c.logo || CANAL_IMG;
+  item.logo = c.logo || CANAL_IMG;
   if (c.referer) item.stream.headers = { Referer: c.referer };
   return item;
 }

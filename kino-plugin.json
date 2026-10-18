@@ -1,7 +1,7 @@
 {
   "id": "bolivia-tv",
   "name": "Bolivia TV",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "apiVersion": 3,
   "description": "55 canales de Bolivia (televisión, deportes y universitarios), lista fija guardada dentro del plugin.",
   "entry": "plugin.js",
