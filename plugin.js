@@ -4,6 +4,9 @@
 // plugin sigue funcionando igual. Para actualizar la lista en el futuro, solo hay que
 // reemplazar el array CANALES por una lista nueva.
 
+// Imagen que usan todos los canales (archivo canal.png del repo).
+const CANAL_IMG = "https://raw.githubusercontent.com/cuentademo051092/kino-plugin-boliviatv/main/canal.png";
+
 const CANALES = [
   { id: "amitel-tv-720p", title: "Amitel TV (720p)", url: "https://stv2.boliviaplay.com.bo/hls/stream.m3u8" },
   { id: "atb-la-paz", title: "ATB La Paz", url: "https://stream.atb.com.bo/live/daniel/index.m3u8" },
@@ -80,7 +83,7 @@ export async function liveChannels() {
 
 function toItem(c) {
   const item = { id: c.id, title: c.title, kind: "live", stream: { url: c.url } };
-  if (c.logo) item.poster = c.logo;
+  item.poster = c.logo || CANAL_IMG;
   if (c.referer) item.stream.headers = { Referer: c.referer };
   return item;
 }
